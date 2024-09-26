@@ -43,8 +43,8 @@ void sellStuffs(){
 		for(int i=0;i<n;i++){
 			scanf("%d",&tmp);
 			a[i]-=tmp;
-			c+=tmp1;
-			d[i]+=tmp1;
+			c+=tmp;
+			d[i]+=tmp;
 		}	
 	}
 	else{
@@ -74,14 +74,13 @@ void remainStuffs(){
 int main(){
 	n=5;
 	while(1){
-		printf("[쇼핑몰 관리 프로그램]\n>원하는 메뉴를 선택하세요.(1. 입고, 2. 판매, 3. 상품현황, 4. 종료\n>)");
+		printf("[쇼핑몰 관리 프로그램]\n>원하는 메뉴를 선택하세요.(1. 입고, 2. 판매, 3. 상품현황, 4. 종료)\n>");
 		scanf("%d",&sign);
 		if(sign==4) break;
-		if(sign==3) reaminStuffs();
+		if(sign==3) remainStuffs();
 		if(sign==2) sellStuffs();
 		if(sign==1) putStuffs();
 		printf("\n\n");
 	}
-
 	return 0;
 }

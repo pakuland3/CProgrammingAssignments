@@ -9,6 +9,7 @@ int getLine(char* line){
 }
 
 char input[100];
+int num;
 
 int main(){
     FILE *fp_src,*fp_dest;
@@ -21,8 +22,8 @@ int main(){
         return 0;
     }
     while(!feof(fp_src)){
-        fscanf(fp_src,"%s\n",input);
-        fprintf(fp_dest,"%s\n",input);
+        fscanf(fp_src,"%s %d",input,&num);
+        fprintf(fp_dest,"%s %d\n",input);
     }
     fclose(fp_src);
     fclose(fp_dest);

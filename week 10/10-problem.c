@@ -153,5 +153,6 @@ int main(){
 		if(sign==1) putStuffs();
 		printf("\n\n");
 	}
+	fclose(fp);
 	return 0;
 }

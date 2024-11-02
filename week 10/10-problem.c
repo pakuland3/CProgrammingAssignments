@@ -83,12 +83,12 @@ void printInfo(){
 	else{
 	    for(int i=1;i<SIZE;i++){
 	        if(stuff[i].id==-1) continue;
-	        fprintf("상품 ID : %d\n",i);
-	        fprintf("상품명 : %s\n",stuff[i].name);
-	        fprintf("상품 가격 : %d\n",stuff[i].price);
-	        fprintf("입고량 : %d\n",stuff[i].inputs);
-	        fprintf("판매량 : %d\n",stuff[i].sells);
-	        fprintf("총 판매 금액 : %d\n",stuff[i].price*stuff[i].sells);
+	        fprintf(fp,"상품 ID : %d\n",i);
+	        fprintf(fp,"상품명 : %s\n",stuff[i].name);
+	        fprintf(fp,"상품 가격 : %d\n",stuff[i].price);
+	        fprintf(fp,"입고량 : %d\n",stuff[i].inputs);
+	        fprintf(fp,"판매량 : %d\n",stuff[i].sells);
+	        fprintf(fp,"총 판매 금액 : %d\n",stuff[i].price*stuff[i].sells);
 	    }
 	}
 }
@@ -116,25 +116,25 @@ void remainStuffs(){
 		}
 	}
 	else{
-		fprintf("재고수량 : ");
+		fprintf(fp,"재고수량 : ");
 		for(int i=1;i<SIZE;i++){
 		    if(stuff[i].id==-1){
-		        fprintf("-1 ");
+		        fprintf(fp,"-1 ");
 		        continue;
 		    }
-		    fprintf("%d ",stuff[i].inputs);
+		    fprintf(fp,"%d ",stuff[i].inputs);
 		}
-		fprintf("\n총 판매량 : %d (판매율 %lf%)\n",(int)totalsells,totalsells/totalinputs*100);
-		fprintf("가장 많이 판매된 상품 : ID %d, 상품명 : %s, 판매량 %d\n",maxi,stuff[maxi].name,stuff[maxi].sells);
-		fprintf("가장 적게 판매된 상품 : ID %d, 상품명 : %s, 판매량 %d\n",mini,stuff[mini].name,stuff[mini].sells);
+		fprintf(fp,"\n총 판매량 : %d (판매율 %lf%)\n",(int)totalsells,totalsells/totalinputs*100);
+		fprintf(fp,"가장 많이 판매된 상품 : ID %d, 상품명 : %s, 판매량 %d\n",maxi,stuff[maxi].name,stuff[maxi].sells);
+		fprintf(fp,"가장 적게 판매된 상품 : ID %d, 상품명 : %s, 판매량 %d\n",mini,stuff[mini].name,stuff[mini].sells);
 		for(int i=1;i<SIZE;i++){
-			if(stuff[i].id!=-1 && stuff[i].inputs<3) fprintf("상품 ID %d, 상품명 : %s 재고부족(%d)\n",i,stuff[i].name,stuff[i].inputs);
+			if(stuff[i].id!=-1 && stuff[i].inputs<3) fprintf(fp,"상품 ID %d, 상품명 : %s 재고부족(%d)\n",i,stuff[i].name,stuff[i].inputs);
 		}
 	}
 }
 
 int main(){
-	if((fp=fopen("재고현황.txt","w"))==NULL){
+	if((fp=fopen("current_stock.txt","w"))==NULL){
 		printf("error");
 		return 0;
 	}
